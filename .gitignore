@@ -1,0 +1,26 @@
+# Local Terraform working directory — caches the backend config, including the
+# organization name, and downloaded provider binaries.
+.terraform/
+
+# State files. State belongs in HCP Terraform; local copies may contain secrets.
+*.tfstate
+*.tfstate.*
+
+# Variable files that commonly hold subscription IDs or credentials.
+*.tfvars
+*.tfvars.json
+
+# Crash logs
+crash.log
+crash.*.log
+
+# CLI configuration and local overrides
+.terraformrc
+terraform.rc
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Local machine-specific tool settings
+.claude/settings.local.json
