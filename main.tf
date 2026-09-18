@@ -1,4 +1,5 @@
 # Configure the Azure provider
+
 terraform {
   required_version = ">= 1.1.0"
   required_providers {
@@ -7,12 +8,20 @@ terraform {
       version = "~> 3.117"
     }
   }
-  cloud {
-    organization = "example-org"
-    workspaces {
-      name = "learn-terraform-azure"
-    }
+  backend "azurerm" {
+    use_cli              = true
+    use_azuread_auth     = true
+    resource_group_name  = "rg-terraform-state"
+    storage_account_name = "stmenutfstatedev"
+    container_name       = "tfstate"
+    key                  = "prod/terraform.tfstate"
   }
+  # cloud {
+  #   organization = "example-org"
+  #   workspaces {
+  #     name = "learn-terraform-azure"
+  #   }
+  # }
 }
 
 provider "azurerm" {
